@@ -1,32 +1,35 @@
 "Management Contact Program"
 
-def main():
-    if contact:
-        for num, item in enumerate(contact, start=1):
-            print(f'\n{num}. {item["name"]} : {item["phone"]} : {item["email"]}')
-    else:
-        print('\nNo user added')
-        return 1
+class contact:
+    def __init__(self):
+        self.contact = []
 
-def contact():
-    name = input('\nEnter your name: ')
-    phone = input('\nEnter your phone: ')
-    email = input('\nEnter your email: ')
-    new_contact = {'name': name, 'phone': phone, 'email': email}
-    contact.append(new_contact)
-    print('\nUser added successfully!')
+    def main(self):
+        if self.contact:
+            for num, item in enumerate(self.contact, start=1):
+                print(f'\n{num}. {item["name"]} : {item["phone"]} : {item["email"]}')
+        else:
+            print('\nNo user added')
+            return 1
 
-def delete():
-    if main() == 1:
-        return
-    else:
-        delete_contact = int(input('\nEnter your choice: '))
-        del contact[delete_contact - 1]
-        print('\nUser deleted successfully!')
+    def add_contact(self):
+        name = input('\nEnter your name: ')
+        phone = input('\nEnter your phone: ')
+        email = input('\nEnter your email: ')
+        new_contact = {'name': name, 'phone': phone, 'email': email}
+        self.contact.append(new_contact)
+        print('\nUser added successfully!')
 
-contact1 = {'name': "Jorge", 'phone': '680000000', 'email': 'Joe@python.com'}
-contact2 = {'name': "George", 'phone': '68000001','email': 'George@python.com'}
-contact = [contact1, contact2]
+    def delete(self):
+        if self.main() == 1:
+            return
+        else:
+            delete_contact = int(input('\nEnter your choice: '))
+            del contact[delete_contact - 1]
+            print('\nUser deleted successfully!')
+
+office_contact = contact()
+family_contact = contact()
 
 while True:
     print('\nMENU KONTAK')
@@ -39,16 +42,15 @@ while True:
 
     if choice == '1':
         #List new user
-        main()
+        office_contact.main()
 
     elif choice == '2':
         #Add new user and edit user
-        contact()
+        office_contact.add_contact()
 
     elif choice == '3':
         #Delete user
-        delete()
-
+        office_contact.delete()
     elif choice == '4':
         break
     else:
